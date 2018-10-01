@@ -27,3 +27,7 @@ Hello world!
 Make a change to a file in your repository, for example, readme.md, and push it to GitHub . If you configured things correctly, Jenkins pulls the code from your Git repository into a workspace, builds the container image, pushes the container image to ECR, creates a task and service definition, and starts your service.
 
 The AWS documentation says: "If you have updated the Docker image of your application, you can create a new task definition with that image and deploy it to your service, one task at a time." This is pretty much everything that is currently available in the documentation currently (13th April 2015).
+
+Without dynamic ports, only one instance of a service can be deployed per container as the port being used by the instance cannot be used by any other instance. When you update the service, it will try to restart all its instances and if more than one instances are being started on a single EC2 container, the startup will fail.
+
+Better to use docker containers with dynamic port mapping in ECS cluster.
