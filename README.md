@@ -1,32 +1,18 @@
-hello-world
-===========
-
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
-
-Sample docker image to test docker deployments
-
-## Running locally
-
-Build and run using Docker Compose:
-
-	$ git clone https://github.com/docker/dockercloud-hello-world
-	$ cd dockercloud-hello-world
-	$ docker-compose up
-
-
-## Deploying to Docker Cloud
-
-[Install the Docker Cloud CLI](https://docs.docker.com/docker-cloud/tutorials/installing-cli/)
-
-	$ docker login
-	$ docker-cloud stack up
-
-Hello world!
 
 ## Continuous Delivery Pipeline for Amazon ECS Using Jenkins, GitHub, and Amazon ECR
-Make a change to a file in your repository, for example, readme.md, and push it to GitHub . If you configured things correctly, Jenkins pulls the code from your Git repository into a workspace, builds the container image, pushes the container image to ECR, creates a task and service definition, and starts your service.
 
-The AWS documentation says: "If you have updated the Docker image of your application, you can create a new task definition with that image and deploy it to your service, one task at a time." This is pretty much everything that is currently available in the documentation currently (13th April 2015).
+Demo Project is intended to help to set up and configure a continuous delivery pipeline for Amazon Elastic Container Service (Amazon ECS) using Jenkins, GitHub, and the Amazon Elastic Container Registry (Amazon ECR). The pipeline builds Docker images from a GitHub repository, pushes those images to an ECR registry, creates an ECS task definition, and then uses that task definition to create a service on the ECS cluster. We use Jenkins to orchestrate the different steps in the workflow.
+
+## Official documentation
+https://docs.aws.amazon.com/AWSGettingStartedContinuousDeliveryPipeline/latest/GettingStarted/CICD_Jenkins_Pipeline.html#create-ecr-registry
+
+1) Make a change source code in your repository and push changes to GitHub 
+
+2) Jenkins pulls the code from your Git repository into a workspace
+
+3) builds the container image, pushes the container image to ECR
+
+4) creates a task and service definition, and starts your service.
 
 Without dynamic ports, only one instance of a service can be deployed per container as the port being used by the instance cannot be used by any other instance. When you update the service, it will try to restart all its instances and if more than one instances are being started on a single EC2 container, the startup will fail.
 
