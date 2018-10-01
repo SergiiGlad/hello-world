@@ -22,3 +22,5 @@ Build and run using Docker Compose:
 	$ docker-cloud stack up
 
 Hello world!
+
+Make a change to a file in your repository, for example, readme.md, and push it to GitHub . If you configured things correctly, Jenkins pulls the code from your Git repository into a workspace, builds the container image, pushes the container image to ECR, creates a task and service definition, and starts your service.
